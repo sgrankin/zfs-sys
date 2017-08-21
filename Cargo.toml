@@ -1,0 +1,6 @@
+[package]
+name = "zfs-sys"
+version = "0.7.1"
+authors = ["Sergey Grankin <sgrankin@gmail.com>"]
+
+[dependencies]
