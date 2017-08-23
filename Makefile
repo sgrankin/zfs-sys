@@ -2,16 +2,21 @@
 
 all: build test
 
-build: src/bindings.rs
+build: src/lib.rs
 	cargo build
 
 test:
 	cargo test
 
-src/bindings.rs: wrapper.h Makefile
+src/lib.rs: wrapper.h Makefile
 	bindgen --output $@ \
 		--ctypes-prefix ::libc \
 		--use-core \
+		--raw-line "#![allow(non_upper_case_globals)]" \
+		--raw-line "#![allow(non_camel_case_types)]" \
+		--raw-line "#![allow(non_snake_case)]" \
+		--raw-line "#![no_std]" \
+		--raw-line "extern crate libc;" \
 		$< \
 		-- \
 		-I/usr/include/libzfs \
