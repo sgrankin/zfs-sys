@@ -4,3 +4,4 @@ version = "0.7.1"
 authors = ["Sergey Grankin <sgrankin@gmail.com>"]
 
 [dependencies]
+libc = "0.2.29"
